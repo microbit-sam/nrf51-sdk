@@ -59,7 +59,7 @@
  *
  * @param[in]   section_name    Name of the section to register
  **/
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 // Not required by this compiler
 #define NRF_SECTION_VARS_REGISTER_SECTION(section_name)
@@ -88,7 +88,7 @@
  *
  * @param[in]   section_name    Name of the section
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_START_SYMBOL(section_name)         section_name ## $$Base
 
@@ -114,7 +114,7 @@
  *
  * @param[in]   section_name    Name of the section    
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_END_SYMBOL(section_name)           section_name ## $$Limit
 
@@ -138,7 +138,7 @@
  * @param[in]   section_name    Name of the section
  */
 
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_LENGTH(section_name) \
     ((uint32_t)&NRF_SECTION_VARS_END_SYMBOL(section_name) - (uint32_t)&NRF_SECTION_VARS_START_SYMBOL(section_name))
@@ -164,7 +164,7 @@
  *
  * param[in]    section_name    Name of the section to get the start address from
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_START_ADDR(section_name)       (uint32_t)&NRF_SECTION_VARS_START_SYMBOL(section_name)
       
@@ -187,7 +187,7 @@
  *
  * @param[in]   section_name    Name of the section to get end address from
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_END_ADDR(section_name)         (uint32_t)&NRF_SECTION_VARS_END_SYMBOL(section_name)
       
@@ -213,7 +213,7 @@
  * @param[in]   type_name       Name of the type stored in the section
  * @param[in]   section_name    Name of the section
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_REGISTER_SYMBOLS(type_name, section_name)      \
     extern type_name* NRF_SECTION_VARS_START_SYMBOL(section_name);      \
@@ -253,7 +253,7 @@
  * @param[in]   section_name    Name of the section
  * @param[in]   type_def        Datatype of the symbol to place in the given section
  */
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
     
 #define NRF_SECTION_VARS_ADD(section_name, type_def) \
     static type_def __attribute__((section( #section_name ))) __attribute__((used))
@@ -288,7 +288,7 @@
  * @param[in]   section_name    Name of the section
  */
       
-#if defined __CC_ARM
+#if defined (_CC_ARM) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_GET(i, type_name, section_name) \
     (type_name*)(NRF_SECTION_VARS_START_ADDR(section_name) + i * sizeof(type_name))
