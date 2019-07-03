@@ -59,7 +59,7 @@
  *
  * @param[in]   section_name    Name of the section to register
  **/
-#if defined (_CC_ARM) || (__ARMCC_VERSION)
+#if defined (__CC_ARM)
 
 // Not required by this compiler
 #define NRF_SECTION_VARS_REGISTER_SECTION(section_name)
@@ -69,7 +69,7 @@
 // Not required by this compiler
 #define NRF_SECTION_VARS_REGISTER_SECTION(section_name)
 
-#elif defined __ICCARM__
+#elif defined (__ICCARM__) || (__ARMCC_VERSION)
 
 #define NRF_SECTION_VARS_REGISTER_SECTION(section_name) NRF_PRAGMA(section = ## #section_name )
 
