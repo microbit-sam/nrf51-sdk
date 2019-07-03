@@ -111,7 +111,7 @@ loop
         BX     LR
 }
 
-#elif defined ( __ICCARM__ ) || (__ARMCC_VERSION)
+#elif defined ( __ICCARM__ ) || (__ARMCC_VERSION >= 6000000)
 
 static void __INLINE nrf_delay_us(uint32_t volatile number_of_us)
 {
